@@ -1,0 +1,55 @@
+agenda = {}
+
+def menu():
+    while True:
+        print('---Agenda Telefonica ---')
+        print('1 - Adicionara contato')
+        print('2 - Editar contato (telefone)')
+        print('3 - Remover contato')
+        print('4 - Buscar contato')
+        print('5 - Listar contatos')
+        print('6 - Sair')
+    
+        opcao = int(input('Selecione uma opção: '))
+        if opcao == 1:
+            nome = input('Digite o nome: ')
+            telefone = input('Digite o numero: ')
+            agenda[nome] = telefone
+            print('Contato adicionado com sucesso.')
+    
+        elif opcao == 2:
+            nome = input('Digite o nome do contato: ')
+            if nome in agenda:
+                agenda[nome] = input('Digite o novo telefone: ')
+                print('Contato alterado com sucesso.')
+            else:
+                print('Nome não encontrado. ')
+                
+        elif opcao == 3:
+            nome = input('digite o nome do contato: ')
+            if nome in agenda:
+                del agenda[nome]
+                print('Contato apagado com sucesso.')
+            else: 
+                print('Contato não encontrado.')
+                
+        elif opcao == 4:
+            nome = input('Digite o nome do contato: ')
+            if nome in agenda:
+                print(f'telefone do contato é: {agenda[nome]}')
+            else:
+                print('contato não encontrado.')
+    
+        elif opcao == 5:
+            for nome in agenda:
+                print(f'O nome do contato é: {nome} e o  número é: {agenda[nome]}')
+                
+        elif opcao == 6:
+            print('Programa finalizado.')
+            break
+    
+        else:
+            print('Opção inválida.')
+            return (menu())
+        
+menu()
